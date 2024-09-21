@@ -1,6 +1,6 @@
 ## Documentation:
 
-todo:
+todo (fe):
 1. update item
 2. delete item
 3. add new transaction
