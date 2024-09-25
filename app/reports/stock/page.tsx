@@ -3,19 +3,19 @@
 import Layout from "@/components/myLayout";
 import React, { useEffect, useState } from "react";
 import { DataTable } from "./data-table";
-import { columns, Items } from "./columns";
+import { columns, Item } from "./columns";
 import { useRouter } from "next/navigation";
 
 interface ApiResponse {
   isSuccess: boolean;
   message: string;
   data: {
-    stockReport: Items[];
+    stockReport: Item[];
   };
 }
 
 const StockReportPage: React.FC = () => {
-  const [items, setItems] = useState<Items[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();

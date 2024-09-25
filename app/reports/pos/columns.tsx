@@ -12,11 +12,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export type Transaction = {
+export interface Transaction {
   transactionId: number;
   date: string;
   totalPrice: number;
-};
+  items: Item[];
+}
+
+export interface Item {
+  id: string;
+  itemName: string;
+  price: number;
+  stock: number;
+  category: string;
+  quantity: number;
+}
 
 export const columns: ColumnDef<Transaction>[] = [
   {

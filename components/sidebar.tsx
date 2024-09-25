@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const Sidebar = () => {
+const Sidebar = ({ className }: { className?: string }) => {
   const router = useRouter();
 
   const handleLogout = () => {
@@ -20,67 +20,69 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-gray-800 text-white w-64 min-h-screen p-4">
-      <Link href="/dashboard">
-        <h1 className="text-2xl font-bold mb-6">POS System</h1>
-      </Link>
-      <nav>
-        <ul className="space-y-2">
-          <li>
-            <Link
-              href="/items"
-              className="block py-2 px-4 hover:bg-gray-700 rounded"
-            >
-              Items
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/pos"
-              className="block py-2 px-4 hover:bg-gray-700 rounded"
-            >
-              POS
-            </Link>
-          </li>
-          <li>
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="py-2 px-4 hover:bg-gray-700 rounded mb-2">
-                  Reports
-                </AccordionTrigger>
-                <AccordionContent>
-                  <ul className="space-y-2">
-                    <li>
-                      <Link
-                        href="/reports/pos"
-                        className="block py-2 px-4 hover:bg-gray-700 rounded"
-                      >
-                        POS Report
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/reports/stock"
-                        className="block py-2 px-4 hover:bg-gray-700 rounded"
-                      >
-                        Stock Report
-                      </Link>
-                    </li>
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </li>
-          <li>
-            <button
-              onClick={handleLogout}
-              className="w-full text-left py-2 px-4 hover:bg-gray-700 rounded"
-            >
-              Log out
-            </button>
-          </li>
-        </ul>
-      </nav>
+    <div className={`bg-gray-800 text-white min-h-screen p-5 ${className}`}>
+      <div className="fixed w-52">
+        <Link href="/dashboard">
+          <h1 className="text-2xl font-bold mb-6">POS System</h1>
+        </Link>
+        <nav>
+          <ul className="space-y-2">
+            <li>
+              <Link
+                href="/items"
+                className="block py-2 px-4 hover:bg-gray-700 rounded"
+              >
+                Items
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/pos"
+                className="block py-2 px-4 hover:bg-gray-700 rounded"
+              >
+                POS
+              </Link>
+            </li>
+            <li>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="py-2 px-4 hover:bg-gray-700 rounded mb-2">
+                    Reports
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="space-y-2">
+                      <li>
+                        <Link
+                          href="/reports/pos"
+                          className="block py-2 px-8 hover:bg-gray-700 rounded"
+                        >
+                          POS Report
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/reports/stock"
+                          className="block py-2 px-8 hover:bg-gray-700 rounded"
+                        >
+                          Stock Report
+                        </Link>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </li>
+            <li>
+              <button
+                onClick={handleLogout}
+                className="w-full text-left py-2 px-4 hover:bg-gray-700 rounded"
+              >
+                Log out
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };

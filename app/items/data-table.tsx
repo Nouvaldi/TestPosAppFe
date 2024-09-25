@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ColumnDef,
   SortingState,
   ColumnFiltersState,
   flexRender,
@@ -24,16 +23,19 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import React from "react";
+import { columns, Item } from "./columns";
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+interface DataTableProps {
+  data: Item[];
+  handleOpenUpdateDialog: (item: Item) => void;
+  handleOpenDeleteDialog: (item: Item) => void;
 }
 
-export function DataTable<TData, TValue>({
-  columns,
+export const DataTable: React.FC<DataTableProps> = ({
   data,
-}: DataTableProps<TData, TValue>) {
+  handleOpenUpdateDialog,
+  handleOpenDeleteDialog,
+}) => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -51,6 +53,10 @@ export function DataTable<TData, TValue>({
     state: {
       sorting,
       columnFilters,
+    },
+    meta: {
+      handleOpenUpdateDialog,
+      handleOpenDeleteDialog,
     },
   });
 
@@ -146,4 +152,4 @@ export function DataTable<TData, TValue>({
       </div>
     </div>
   );
-}
+};
