@@ -47,7 +47,7 @@ export const columns: ColumnDef<Item>[] = [
     cell: ({ row }) => {
       const imageUrl = `http://localhost:5000${row.getValue("imageUrl")}`;
       return (
-        <div className="relative w-[100px] aspect-square">
+        <div className="relative w-full aspect-square">
           <Image
             src={`${imageUrl}`}
             fill
